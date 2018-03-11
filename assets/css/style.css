@@ -14,12 +14,12 @@ h1 {
 }
 
 /* This is the game board */
-.game-space {
+/* .game-space {
   display: flex;
   justify-content: space-evenly;
   align-content: center;
   align-items: center;
-}
+} */
 
 .jumbotron {
   padding: 0.5em 0.6em;
@@ -45,7 +45,20 @@ h1 {
   justify-content: center;
   align-items: center;
   padding: 10px;
-  margin-left: 10px;
+  margin-left: 12px;
+}
+
+.character-name {
+  text-align: center;
+  background-color: white;
+  max-width: 150px;
+}
+
+.health {
+  margin-top: 10px;
+  text-align: center;
+  background-color: white;
+  max-width: 150px;
 }
 
 /* .character-image {
@@ -105,7 +118,7 @@ h1 {
 }
 
 #darth-vader-character{
-  padding: 10px;
+  padding: 30px;
 }
 
 #qui-gon-jinn-image {
@@ -117,7 +130,7 @@ h1 {
 }
 
 #boba-fett-character {
-  padding: 10px;
+  padding: 30px;
 }
 
 #yoda-image {
@@ -129,7 +142,7 @@ h1 {
 }
 
 #kylo-ren-character {
-  padding: 10px;
+  padding: 30px;
 }
 
 #chosen-character {

@@ -322,9 +322,7 @@
 
     $("#attack").on("click", function() {
       console.log("Attack selected");
-
-      console.log("character = " + JSON.stringify(character));
-      console.log("defender = " + JSON.stringify(defender));
+      
 
       // User is ready to attack the defender
       if (characterSelected && defenderSelected && !gameOver) {
