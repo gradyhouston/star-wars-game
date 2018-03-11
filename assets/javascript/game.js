@@ -357,7 +357,7 @@
           $(".defender-character").hide();
 
           // Check if the user has won the game
-          if (enemiesDefeated === 3) {
+          if (enemiesDefeated === 5) {
             gameOver = true;
             $("#game-message").html("<p>You have won the game!!!</p><p>Play again?</p>");
             $("#restart").show();
@@ -369,8 +369,6 @@
         $("#game-message").html("<p>You must choose an enemy to fight.</p>");
       }
 
-      console.log("character = " + JSON.stringify(character));
-      console.log("defender = " + JSON.stringify(defender));
     });
 
     $("#restart").on("click", function() {
