@@ -68,17 +68,17 @@
 // This function will initialize the character value from the global object variables defined above
   function initializeCharacter(chosenCharacter) {
     character.name = chosenCharacter.name;
-    character.health = chosenCharacter.health;
-    character.baseAttack = chosenCharacter.baseAttack;
-    character.attack = chosenCharacter.attack;
+    character.healthPoints = chosenCharacter.healthPoints;
+    character.attackPower = chosenCharacter.attackPower;
+    character.counterAttackPower = chosenCharacter.counterAttackPower;
   }
 
 // This function will initialize the enemy's value from the global object variables defined above
   function initializeDefender(chosenDefender) {
     defender.name = chosenDefender.name;
-    defender.health = chosenDefender.health;
-    defender.baseAttack = chosenDefender.baseAttack;
-    defender.attack = chosenDefender.attack;
+    defender.healthPoints = chosenDefender.healthPoints;
+    defender.attackPower = chosenDefender.attackPower;
+    defender.counterAttackPower = chosenDefender.counterAttackPower;
   }
 
 // This function will move the remaining characters to the enemies section
@@ -90,12 +90,12 @@
 // This function will reset the state of the game
   function resetGame() {
     // Reset all the health values to the original
-    $("#qui-gon-jinn-character").children(".health").html(quiGonJinn.health);
-    $("#luke-skywalker-character").children(".health").html(lukeSkywalker.health);
-    $("#darth-vader-character").children(".health").html(darthVader.health);
-    $("#boba-fett-character").children(".health").html(bobaFett.health);
-    $("#yoda-character").children(".health").html(yoda.health);
-    $("#kylo-ren-character").children(".health").html(kyloRen.health);
+    $("#qui-gon-jinn-character").children(".health").html(quiGonJinn.healthPoints);
+    $("#luke-skywalker-character").children(".health").html(lukeSkywalker.healthPoints);
+    $("#darth-vader-character").children(".health").html(darthVader.healthPoints);
+    $("#boba-fett-character").children(".health").html(bobaFett.healthPoints);
+    $("#yoda-character").children(".health").html(yoda.healthPoints);
+    $("#kylo-ren-character").children(".health").html(kyloRen.healthPoints);
 
     $(".character-image").removeClass("chosen-character enemy-character defender-character").addClass("available-character");
     var available = $(".available-character").show();
@@ -322,26 +322,26 @@
 
     $("#attack").on("click", function() {
       console.log("Attack selected");
-      
+
 
       // User is ready to attack the defender
       if (characterSelected && defenderSelected && !gameOver) {
         // User attacks the defender and decreases the defender's health points
-        defender.health = defender.health - character.attack;
-        $(".defender-character").children(".health").html(defender.health);
-        $("#game-message").html("<p>You attacked " + defender.name + " for " + character.attack + " damage.<p>");
+        defender.healthPoints = defender.healthPoints - character.attackPower;
+        $(".defender-character").children(".health").html(defender.healthPoints);
+        $("#game-message").html("<p>You attacked " + defender.name + " for " + character.attackPower + " damage. <p> ");
 
         // User's attack power increases
-        character.attack = character.attack + character.baseAttack;
+        character.counterAttackPower = character.counterAttackPower + character.attackPower;
 
         // If defender is still alive, they counter attack the user
-        if (defender.health > 0) {
-          character.health = character.health - defender.baseAttack;
-          $(".chosen-character").children(".health").html(character.health);
+        if (defender.healthPoints > 0) {
+          character.healthPoints = character.healthPoints - defender.counterAttackPower;
+          $(".chosen-character").children(".health").html(character.healthPoints);
 
           // Check if the user survives the attack
-          if (character.health > 0) {
-            $("#game-message").append("<p>" + defender.name + " attacked you back for " + defender.baseAttack + " damage.</p>");
+          if (character.healthPoints > 0) {
+            $("#game-message").append("<p>" + defender.name + " attacked you back for " + defender.counterAttackPower + " damage. </p>");
           } else {
             gameOver = true;
             $("#game-message").html("<p>You were defeated...</p><p>Play again?</p>");
