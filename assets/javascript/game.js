@@ -63,7 +63,7 @@
     counterAttackPower: 14
   };
 
-// ----- Helper Functions ----- //
+// ----- Functions ----- //
 
 // This function will initialize the character value from the global object variables defined above
   function initializeCharacter(chosenCharacter) {
@@ -117,6 +117,8 @@
 
   // Run Javascript when the HTML has finished loading
   $(document).ready(function() {
+
+
 
     // Hide the "Restart" button on document load
     $("#restart").hide();
@@ -329,7 +331,7 @@
         // User attacks the defender and decreases the defender's health points
         defender.healthPoints = defender.healthPoints - character.attackPower;
         $(".defender-character").children(".health").html(defender.healthPoints);
-        $("#game-message").html("<p>You attacked " + defender.name + " for " + character.attackPower + " damage. <p> ");
+        $("#game-message").html("You attacked " + defender.name + " for " + character.attackPower + " damage.");
 
         // User's attack power increases
         character.counterAttackPower = character.counterAttackPower + character.attackPower;
@@ -341,10 +343,10 @@
 
           // Check if the user survives the attack
           if (character.healthPoints > 0) {
-            $("#game-message").append("<p>" + defender.name + " attacked you back for " + defender.counterAttackPower + " damage. </p>");
+            $("#game-message").append(defender.name + " attacked you back for " + defender.counterAttackPower + " damage.");
           } else {
             gameOver = true;
-            $("#game-message").html("<p>You were defeated...</p><p>Play again?</p>");
+            $("#game-message").html("<p>You were defeated...</p>");
             $("#restart").show();
           }
         } else {
