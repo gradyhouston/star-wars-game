@@ -15,51 +15,47 @@
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>
+
     <!-- Overall Bootstrap grid -->
-    <div class="container">
+      <header>
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                      <h1><strong>Star Wars RPG</strong></h1>
+                  </div>
+              </div>
+          </div>
+      </header>
 
-      <!-- Jumbotron with title -->
-      <div class="jumbotron">
-
-        <h1 class="text-center"><strong>Star Wars RPG</strong></h1>
-        <h2 class="text-center">Choose Your Character</h2>
-
-      </div> <!-- End Jumbotron -->
-
-      <!-- Game message section -->
-      <div class="col-lg-12" id="message-section">
-        <div id="game-message"></div>
-        <button id="restart">Play Again</button>
-      </div> <!-- Game message section -->
-
-      <br>
-      <br>
+      <audio id="audio" controls style="display:none"></audio>
+      <audio id="background_audio" autoplay="autoplay">
+        <source src="assets/audio/starwars.m4a"></audio>
+      <a href="#" id="mute">Toggle music</a>
 
       <!-- Contents of the game-->
+    <div class="container-fluid">
       <div class="row">
-
         <!-- Available characters -->
-        <div class="col-lg-12" id="characters-available">
+        <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+          <h2>Choose your hero or villian!</h2>
+          <br>
+        <div class="col-sm-12 col-md-12 col-lg-12" id="characters-available">
           <span class="character-image available-character" id="luke-skywalker-character">
             <p id="character-name">Luke Skywalker</p>
             <img src="assets/images/characters/luke-skywalker.jpg" alt="Luke Skywalker Picture" id="luke-skywalker-image" height="150" width="150">
-            <!-- <div id="hover-text">
-              <div id="hover-text-luke">Luke Skywalker</div>
-              </div> -->
-            <p class="health">Health: 180</p>
-
+            <p class="health">Health: 160</p>
           </span>
 
           <span class="character-image available-character" id="darth-vader-character">
             <p id="character-name">Darth Vader</p>
             <img src="assets/images/characters/darth-vader3.jpg" alt="Darth Vader Picture" id="darth-vader-image" height="150" width="150">
-            <p class="health">Health: 100</p>
+            <p class="health">Health: 180</p>
           </span>
 
           <span class="character-image available-character" id="qui-gon-jinn-character">
             <p id="character-name">Qui-Gon Jinn</p>
             <img src="assets/images/characters/qui-gon-jinn2.jpeg" alt="Qui-Gon Jinn Picture" id="qui-gon-jinn-image" height="150" width="150">
-            <p class="health">Health: 140</p>
+            <p class="health">Health: 120</p>
           </span>
 
           <span class="character-image available-character" id="boba-fett-character">
@@ -71,7 +67,7 @@
           <span class="character-image available-character" id="yoda-character">
             <p id="character-name">Yoda</p>
             <img src="assets/images/characters/yoda.jpg" alt="Yoda Picture" id="yoda-image" height="150" width="150">
-            <p class="health">Health: 160</p>
+            <p class="health">Health: 130</p>
           </span>
 
           <span class="character-image available-character" id="kylo-ren-character">
@@ -79,42 +75,80 @@
             <img src="assets/images/characters/kylo-ren.jpg" alt="Kylo Ren Picture" id="kylo-ren-image" height="150" width="150">
             <p class="health">Health: 150</p>
           </span>
-        </div> <!-- End available characters -->
+        </div>
+        </div>
+      </div>
+        <!-- End available characters -->
 
-        <!-- Your chosen character -->
-        <div class="col-lg-12" id="chosen-character">
-          <h2>Your Character:</h2>
-        </div> <!-- End your chosen character-->
 
-        <br>
 
         <!-- Enemies available to attack -->
-        <div class="col-lg-12" id="enemies-available">
+        <div class="col-sm-12 col-md-12 col-12-lg text-center-enemies">
           <h2>Enemies Available To Attack:</h2>
-        </div> <!-- End enemies available to attack -->
+          <!-- <div class="col-sm-12 col-md-12 col-lg-12"> -->
+           <div id="enemies-available">
+            </div>
+          <!-- </div> -->
+        </div>  <!-- End enemies available to attack -->
+
+
 
         <br />
+        <!-- <hr> -->
         <br />
 
         <!-- Fight section -->
-        <div class="col-lg-12" id="fight-section">
-          <h2>Fight Section</h2>
-          <button id="attack">Attack</button>
-        </div> <!-- End fight section -->
 
-        <br />
-        <br />
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                    <h2> Battle Field </h2>
+                </div>
+            </div>
+            <div class="row">
+                <!-- This is the Battle Area -->
+                <div class="col-sm-12 col-md-4 col-lg-4 text-center">
+                    <h2>Your hero/villian:</h2>
+                    <div class="col-sm-12 col-md-12 col-lg-12 ">
+                    <!-- When you choose your character this is where it is pushed to -->
+                    	<div id="chosen-character">
 
-        <!-- Defender section -->
-        <div class="col-lg-12" id="defender-section">
-          <h2>Defender:</h2>
-        </div> <!-- End defender section -->
+                    <!-- This is where your character will be dynamically updated -->
+                		</div>
+                	</div>
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-4 text-center">
+                   <!-- This is the attack button -->
+                    <button class="waves-effect waves-light btn-danger btn-lg attackBtn text-center" id="attackBtn"> Attack! </button>
+
+                    <br>
+
+                    <!-- Game message section -->
+                    <div class="col-sm-12 col-md-12 col-lg-12" id="message-section">
+                      <div id="game-message"></div>
+                      <button class="waves-effect waves-light btn-warning btn-lg attackBtn text-center" id="restart">Play Again</button>
+                    </div>
+                    <!-- Game message section -->
+
+                    <br>
+
+                </div>
+                <div class="col-sm-12 col-md-4 col-md-4 text-center">
+                	<h2>Defender:</h2>
+                	<div class="col-sm-12 col-md-12 col-lg-12 ">
+                		 <!-- This is where your chosen enemy will be dynamically updated -->
+                		<div id="defender-section">
+                    	</div>
+                    </div>
+                </div>
+            </div>
 
 
 
-      </div> <!-- End contents of the game -->
+    <!-- End defender section -->
 
-    </div> <!-- End Bootstrap grid -->
+       <!-- End contents of the game -->
+
+         <!-- End Bootstrap grid -->
 
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>

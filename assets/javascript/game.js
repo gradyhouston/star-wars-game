@@ -1,5 +1,4 @@
 // Global variables //
-  $(document).ready(function() {
 
 // Has the user selected their character
   var characterSelected = false;
@@ -23,45 +22,69 @@
 
   var quiGonJinn = {
     name: "Qui-Gon Jinn",
-    healthPoints: 140,
-    attackPower: 12,
-    counterAttackPower: 12
+    healthPoints: 120,
+    baseAttackPower: 12,
+    counterAttackPower: 16
   };
 
   var darthVader = {
     name: "Darth Vader",
-    healthPoints: 100,
-    attackPower: 20,
-    counterAttackPower: 14
+    healthPoints: 180,
+    baseAttackPower: 15,
+    counterAttackPower: 25
   };
 
   var bobaFett = {
     name: "Boba Fett",
     healthPoints: 120,
-    attackPower: 10,
-    counterAttackPower: 10
+    baseAttackPower: 10,
+    counterAttackPower: 16
   };
 
   var lukeSkywalker = {
     name: "Luke Skywalker",
-    healthPoints: 180,
-    attackPower: 16,
-    counterAttackPower: 16
+    healthPoints: 160,
+    baseAttackPower: 12,
+    counterAttackPower: 20
   };
 
   var yoda = {
     name: "Yoda",
-    healthPoints: 160,
-    attackPower: 14,
-    counterAttackPower: 18
+    healthPoints: 130,
+    baseAttackPower: 15,
+    counterAttackPower: 30
   };
 
   var kyloRen = {
     name: "Kylo Ren",
     healthPoints: 150,
-    attackPower: 16,
-    counterAttackPower: 14
+    baseAttackPower: 14,
+    counterAttackPower: 24
   };
+
+  // create an array of battle sounds
+	var battleSoundsArray = [
+  'assets/audio/attackAudio/saberclash.mp3',
+  'assets/audio/attackAudio/saberclash1.mp3',
+  'assets/audio/attackAudio/saberclash2.mp3',
+  'assets/audio/attackAudio/saberclash3.mp3',
+  'assets/audio/attackAudio/saberclash4.mp3',
+  'assets/audio/attackAudio/saberclash5.mp3',
+  'assets/audio/attackAudio/saberclash6.mp3',
+  'assets/audio/attackAudio/spin1.mp3',
+  'assets/audio/attackAudio/spin2.mp3',
+  'assets/audio/attackAudio/spin3.mp3',
+  'assets/audio/attackAudio/spin4.mp3',
+  'assets/audio/attackAudio/spin5.mp3',
+  'assets/audio/attackAudio/spin6.mp3',
+  'assets/audio/attackAudio/swing1.mp3',
+  'assets/audio/attackAudio/swing2.mp3'
+];
+	// characterSelectSound: 'assets/audio/saberon.mp3',
+
+  var battleSoundsPick = [];
+
+
 
 // ----- Functions ----- //
 
@@ -69,7 +92,7 @@
   function initializeCharacter(chosenCharacter) {
     character.name = chosenCharacter.name;
     character.healthPoints = chosenCharacter.healthPoints;
-    character.attackPower = chosenCharacter.attackPower;
+    character.baseAttackPower = chosenCharacter.baseAttackPower;
     character.counterAttackPower = chosenCharacter.counterAttackPower;
   }
 
@@ -77,7 +100,7 @@
   function initializeDefender(chosenDefender) {
     defender.name = chosenDefender.name;
     defender.healthPoints = chosenDefender.healthPoints;
-    defender.attackPower = chosenDefender.attackPower;
+    defender.baseAttackPower = chosenDefender.baseAttackPower;
     defender.counterAttackPower = chosenDefender.counterAttackPower;
   }
 
@@ -113,11 +136,27 @@
     defender = {};
   }
 
+  // Get a random audio file to play when attack is clicked
+  var battleSoundsPick = battleSoundsArray[Math.floor(Math.random() * battleSoundsArray.length)];
+
+
 // ----- Main Routine ----- //
 
   // Run Javascript when the HTML has finished loading
-  $(document).ready(function() {
+$(document).ready(function() {
 
+    // gets the link for the theme song to be played in the background
+  	// var audioElement = document.createElement('audio');
+  	// audioElement.autoplay = false;
+  	// audioElement.loop = true;
+    // audioElement.setAttribute('src', 'assets/audio/starwars.m4a');
+
+    var audioMute = document.getElementById('background_audio');
+      document.getElementById('mute').addEventListener('click', function (e) {
+        e = e || window.event;
+        audioMute.muted = !audioMute.muted;
+        e.preventDefault();
+    }, false);
 
 
     // Hide the "Restart" button on document load
@@ -322,19 +361,24 @@
       }
     });
 
-    $("#attack").on("click", function() {
-      console.log("Attack selected");
+
+    $("#attackBtn").on("click", function() {
+      var audio = document.getElementById("audio")
+      audio.src = (battleSoundsPick);
+      audio.play();
+      console.log("Enemy's health: " + defender.healthPoints + " - " + "Your health: " + character.healthPoints);
+
 
 
       // User is ready to attack the defender
       if (characterSelected && defenderSelected && !gameOver) {
         // User attacks the defender and decreases the defender's health points
-        defender.healthPoints = defender.healthPoints - character.attackPower;
+        defender.healthPoints = defender.healthPoints - character.baseAttackPower;
         $(".defender-character").children(".health").html(defender.healthPoints);
-        $("#game-message").html("You attacked " + defender.name + " for " + character.attackPower + " damage.");
+        $("#game-message").html("You attacked " + defender.name + " for " + character.baseAttackPower + " damage.");
 
         // User's attack power increases
-        character.counterAttackPower = character.counterAttackPower + character.attackPower;
+        character.counterAttackPower = character.counterAttackPower + character.baseAttackPower;
 
         // If defender is still alive, they counter attack the user
         if (defender.healthPoints > 0) {
@@ -377,5 +421,4 @@
       resetGame();
     });
 
-});
-});
+}); // Main routine
