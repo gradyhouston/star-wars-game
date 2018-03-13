@@ -9,7 +9,7 @@
     <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
 
      <!-- Link to the Bootstrap library -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- Link to my CSS file -->
     <link rel="stylesheet" href="assets/css/style.css">
@@ -27,10 +27,27 @@
           </div>
       </header>
 
+      <!-- Background audio section - links to var audioMute in js --> 
       <audio id="audio" controls style="display:none"></audio>
       <audio id="background_audio" autoplay="autoplay">
         <source src="assets/audio/starwars.m4a"></audio>
-      <a href="#" id="mute">Toggle music</a>
+        <a href="#" id="mute"><img class="audio-button-unmute" src="assets/images/audio/audio_on.png" height="30px" width="30px"></a>
+        <a href="#" id="mute"></a>
+
+      <!-- More attemps at audio toggles for the background music -->
+        <!-- <audio id="audio" controls style="display:none">
+        <source src="assets/audio/starwars.m4a"></audio>
+        <div id="mute-toggle" img src="assets/images/audio_on.png"></div> <!-- mute / unmute toggle !-->
+
+        <!-- <div id="audio">
+          <a href="#">
+            <img id="mute" src ="assets/images/audio_off.png" width="30" height="30" alt="Sound Off" />
+        </a>
+
+      <audio id="background_audio" autoplay loop preload src="assets/audio/starwars.m4a" src ="assets/images/audio_on.png">
+
+      </audio>
+    </div> -->
 
       <!-- Contents of the game-->
     <div class="container-fluid">
@@ -151,7 +168,7 @@
          <!-- End Bootstrap grid -->
 
     <!-- jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script> -->
     <!-- Javascript link -->
     <script src="assets/javascript/game.js" charset="utf-8"></script>
   </body>

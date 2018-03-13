@@ -84,6 +84,22 @@
 
   var battleSoundsPick = [];
 
+  // Background array
+  var bgArray = [
+    "assets/images/starwars_bg1.jpg",
+    "assets/images/starwars_bg2.jpg",
+    "assets/images/starwars_bg3.jpg",
+    "assets/images/starwars_bg4.jpg",
+    "assets/images/starwars_bg5.jpg",
+    "assets/images/starwars_bg6.jpg",
+    "assets/images/starwars_bg7.jpg",
+    "assets/images/starwars_bg8.jpg",
+    "assets/images/starwars_bg9.jpg",
+    "assets/images/starwars_bg10.jpg"
+  ];
+
+
+
 
 
 // ----- Functions ----- //
@@ -139,14 +155,18 @@
   // Get a random audio file to play when attack is clicked
   var battleSoundsPick = battleSoundsArray[Math.floor(Math.random() * battleSoundsArray.length)];
 
-// TO DO -
-//   randomnize wallpaper
+  // Get a random background image
+  // var bg = bgArray[Math.floor(Math.random() * bgArray.length)];
+
+// TODO -
+//   randomnize wallpaper - WIP
 //   get random battle sounds working
-//   fix math in the console.log when attacking
-//   make "toggle music" look better
+//  1 fix math in the console.log when attacking
+//   make "toggle music" look better - DONE
 //   maybe look at colorizing the character tiles
-//   fix the joined attack message - make it display on a new line
+//  2 fix the joined attack message - make it display on a new line
 //   maybe add line break in the middle?
+//  3 make "choose your hero or villian" go away after choice
 
 
 
@@ -158,7 +178,7 @@ $(document).ready(function() {
 
     // gets the link for the theme song to be played in the background
   	// var audioElement = document.createElement('audio');
-  	// audioElement.autoplay = false;
+  	// audioElement.autoplay = true;
   	// audioElement.loop = true;
     // audioElement.setAttribute('src', 'assets/audio/starwars.m4a');
 
@@ -168,6 +188,60 @@ $(document).ready(function() {
         audioMute.muted = !audioMute.muted;
         e.preventDefault();
     }, false);
+
+        //  EXPERIMENTAL CODE BELOW HERE //
+
+        // Background audio toggle code attemps //
+//     $(document).ready(function(){
+//     var audio = document.getElementById("audio");
+//     audio.autoplay = true;
+//
+//     $("#mute-toggle").click(function(){ // on toggle click
+//         if($(this).hasClass("toggled")){ // if toggle has class "toggled"
+//             audio.muted = false; // unmute audio
+//         } else { // vice versa
+//             audio.muted = true;
+//         }
+//
+        // Another audio toggle code attempt //
+//         $(this).toggleClass("toggled"); // toggle class "toggled"
+//     });
+// });
+
+      // Another audio toggle code attempt //
+//     $(function() {
+//     $("#mute").click(function(e) {
+//         e.preventDefault();
+//
+//         var song = $('background_audio')[0]
+//         if (song.paused){
+//             song.play();
+//             document.getElementById("mute").src = "assets/images/audio_off.png";
+//         }else{
+//             song.pause();
+//             document.getElementById("mute").src = "assets/images/audio_on.png";
+//         }
+//         });
+// });
+
+        // Attempts are random background cycles //
+// $(document).ready(function() {
+//
+//     $('body').css('background', bg);
+//     // then you can put it right before the variable 'bg'
+//     $('body').css('background', "assets/images/backgrounds", bg);
+//
+// });
+
+        // Attempts are random background cycles //
+  //   $('body').css({'background-image': '(assets/images/backgrounds' + bg[Math.floor(Math.random() * bg.length)] + ')'
+  // });
+
+        // Attempts are random background cycles //
+  // bg = bgArray[Math.floor(Math.random() * bgArray.length)];
+  // $("body").css("background-image", 'assets/images(' + bg + ')');
+
+  // $('<img class="fadeIn" src="star-wars-game/assets/images/backgrounds' + bgArray[Math.floor(Math.random() * bgArray.length)] + '">');
 
 
     // Hide the "Restart" button on document load
