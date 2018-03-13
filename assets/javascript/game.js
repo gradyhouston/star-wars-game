@@ -139,6 +139,17 @@
   // Get a random audio file to play when attack is clicked
   var battleSoundsPick = battleSoundsArray[Math.floor(Math.random() * battleSoundsArray.length)];
 
+// TO DO -
+//   randomnize wallpaper
+//   get random battle sounds working
+//   fix math in the console.log when attacking
+//   make "toggle music" look better
+//   maybe look at colorizing the character tiles
+//   fix the joined attack message - make it display on a new line
+//   maybe add line break in the middle?
+
+
+
 
 // ----- Main Routine ----- //
 
