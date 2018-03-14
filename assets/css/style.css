@@ -18,7 +18,12 @@ body {
 }
 
 .text-center-audio {
-  font-size: 12px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.text-center-copyright {
+  font-size: 10px;
   text-align: center;
 }
 
