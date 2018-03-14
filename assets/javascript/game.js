@@ -203,14 +203,6 @@ $(document).ready(function() {
       audioMute.muted = !audioMute.muted;
     });
 
-    //   document.getElementById('mute').addEventListener('click', function (e) {
-    //     e = e || window.event;
-    //     audioMute.muted = !audioMute.muted;
-    //     e.preventDefault();
-    //     $("#unmute").empty();
-    //
-    // }, false);
-
         //  EXPERIMENTAL CODE BELOW HERE //
 
         // Background audio toggle code attemps //
