@@ -85,18 +85,21 @@
   var battleSoundsPick = [];
 
   // Background array
-  var bgArray = [
-    "assets/images/starwars_bg1.jpg",
-    "assets/images/starwars_bg2.jpg",
-    "assets/images/starwars_bg3.jpg",
-    "assets/images/starwars_bg4.jpg",
-    "assets/images/starwars_bg5.jpg",
-    "assets/images/starwars_bg6.jpg",
-    "assets/images/starwars_bg7.jpg",
-    "assets/images/starwars_bg8.jpg",
-    "assets/images/starwars_bg9.jpg",
-    "assets/images/starwars_bg10.jpg"
-  ];
+  // var bgArray = [
+  //     "../images/backgrounds/starwars_bg1.jpg",
+  //     "../images/backgrounds/starwars_bg2.jpg",
+  //     "../images/backgrounds/starwars_bg3.jpg",
+  //     "../images/backgrounds/starwars_bg4.jpg",
+  //     "../images/backgrounds/starwars_bg5.jpg",
+  //     "../images/backgrounds/starwars_bg6.jpg",
+  //     "../images/backgrounds/starwars_bg7.jpg",
+  //     "../images/backgrounds/starwars_bg8.jpg",
+  //     "../images/backgrounds/starwars_bg9.jpg",
+  //     "../images/backgrounds/starwars_bg10.jpg"
+  //   ];
+  //
+  //
+  // var bg = [];
 
 
 
@@ -164,7 +167,7 @@
 //  1 fix math in the console.log when attacking
 //   make "toggle music" look better - DONE
 //   maybe look at colorizing the character tiles
-//  2 fix the joined attack message - make it display on a new line
+//  2 fix the joined attack message - make it display on a new line - DONE
 //   maybe add line break in the middle?
 //  3 make "choose your hero or villian" go away after choice
 
@@ -183,11 +186,30 @@ $(document).ready(function() {
     // audioElement.setAttribute('src', 'assets/audio/starwars.m4a');
 
     var audioMute = document.getElementById('background_audio');
-      document.getElementById('mute').addEventListener('click', function (e) {
-        e = e || window.event;
-        audioMute.muted = !audioMute.muted;
-        e.preventDefault();
-    }, false);
+
+    var muteCtrlSrcs = {
+      unmuted: './assets/images/audio/audio_on.png',
+      muted: './assets/images/audio/audio_off.png'
+    };
+
+    $('#mute').click(function() {
+
+      if (audioMute.muted) {
+        $(this).attr('src', muteCtrlSrcs.unmuted);
+      } else {
+        $(this).attr('src', muteCtrlSrcs.muted);
+      }
+
+      audioMute.muted = !audioMute.muted;
+    });
+
+    //   document.getElementById('mute').addEventListener('click', function (e) {
+    //     e = e || window.event;
+    //     audioMute.muted = !audioMute.muted;
+    //     e.preventDefault();
+    //     $("#unmute").empty();
+    //
+    // }, false);
 
         //  EXPERIMENTAL CODE BELOW HERE //
 
@@ -224,24 +246,50 @@ $(document).ready(function() {
 //         });
 // });
 
-        // Attempts are random background cycles //
+//         // Attempts are random background cycles //
 // $(document).ready(function() {
 //
-//     $('body').css('background', bg);
+//     $('body').css('background-image', bg);
 //     // then you can put it right before the variable 'bg'
-//     $('body').css('background', "assets/images/backgrounds", bg);
+//     $('body').css('background-image', "../images/backgrounds/", bg);
 //
 // });
-
-        // Attempts are random background cycles //
-  //   $('body').css({'background-image': '(assets/images/backgrounds' + bg[Math.floor(Math.random() * bg.length)] + ')'
+//
+//         Attempts are random background cycles //
+    // $('body').css({'background-image': '(../images/backgrounds/' + bg[Math.floor(Math.random() * bg.length)] + ')'
   // });
-
-        // Attempts are random background cycles //
+//
+//         Attempts are random background cycles //
   // bg = bgArray[Math.floor(Math.random() * bgArray.length)];
-  // $("body").css("background-image", 'assets/images(' + bg + ')');
+  // $("body").css("background-image", '../images/backgrounds/(' + bg + ')');
+//
+  // $('<img class="fadeIn" src="../images/backgrounds' + bgArray[Math.floor(Math.random() * bgArray.length)] + '">');
 
-  // $('<img class="fadeIn" src="star-wars-game/assets/images/backgrounds' + bgArray[Math.floor(Math.random() * bgArray.length)] + '">');
+//   $(document).ready(function() {
+//
+//   var bg = bgArray[Math.floor(Math.random() * bgArray.length)];
+//   // var path = '../images/backgrounds';
+//   var imageUrl = bg;
+//   console.log(bg);
+//     $('body').css('background-image', 'url(' + imageUrl + ')');
+// });
+
+
+// function randomBackground() {
+//
+//     $('body').css({
+//         'background' : 'url('+ bgArray[Math.floor(Math.random() * bgArray.length)] + ') no-repeat',
+//         'background-attachment' : 'scroll',
+//         'background-position' : '50% 50%',
+//         'background-size' : 'cover'
+//     });
+// }
+
+// Show Random Image on Page Load
+// randomBackground();
+
+// Simulate a page refresh
+// $('button').on('click', randomHero);
 
 
     // Hide the "Restart" button on document load
@@ -451,7 +499,7 @@ $(document).ready(function() {
       var audio = document.getElementById("audio")
       audio.src = (battleSoundsPick);
       audio.play();
-      console.log("Enemy's health: " + defender.healthPoints + " - " + "Your health: " + character.healthPoints);
+
 
 
 
@@ -460,7 +508,7 @@ $(document).ready(function() {
         // User attacks the defender and decreases the defender's health points
         defender.healthPoints = defender.healthPoints - character.baseAttackPower;
         $(".defender-character").children(".health").html(defender.healthPoints);
-        $("#game-message").html("You attacked " + defender.name + " for " + character.baseAttackPower + " damage.");
+        $("#game-message").html("You attacked " + defender.name + " for " + character.baseAttackPower + " damage. ");
 
         // User's attack power increases
         character.counterAttackPower = character.counterAttackPower + character.baseAttackPower;
@@ -478,6 +526,8 @@ $(document).ready(function() {
             $("#game-message").html("<p>You were defeated...</p>");
             $("#restart").show();
           }
+          console.log("Your health: " + character.healthPoints);
+          console.log("Defender's health: " + defender.healthPoints);
         } else {
           // Defender is defeated
           enemiesDefeated++;

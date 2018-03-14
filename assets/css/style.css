@@ -1,5 +1,7 @@
 body {
-  background-image: url(assets/images/backgrounds/starwars_bg5.jpg);
+  height: 100%;
+  width: 100%;
+  background-image: url(../images/backgrounds/starwars_bg5.jpg);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -7,7 +9,7 @@ body {
   overflow: hidden;
 }
 
-/* .fadeIn{
+/* .fadeIn {
   -webkit-animation: fade-in 2s ease;
   -moz-animation: fade-in ease-in-out 2s both;
   -ms-animation: fade-in ease-in-out 2s both;
@@ -51,17 +53,22 @@ h2 {
   width: 30px;
 } */
 
-#mute {
-    background: url("assets/images/audio_on.png");
-    width: 30px;
-    height: 30px;
-} */
-
-#mute {
-    background: url("assets/images/audio_off.png") !important;
+/* #mute {
+    background: url("assets/images/audio/audio_off.png");
     width: 30px;
     height: 30px;
 }
+
+#unmute {
+    background: url("assets/images/audio/audio_off.png");
+    width: 30px;
+    height: 30px;
+    display: hidden;
+}
+
+.unmuted {
+  background: url("assets/images/audio/audio_on.png") !important;
+} */
 
 /* This is the game board */
 /* .game-space {
