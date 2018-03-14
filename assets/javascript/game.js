@@ -179,6 +179,9 @@
   // Run Javascript when the HTML has finished loading
 $(document).ready(function() {
 
+  // displays the modal
+  $('#myModal').modal('show');
+
     // gets the link for the theme song to be played in the background
   	// var audioElement = document.createElement('audio');
   	// audioElement.autoplay = true;
