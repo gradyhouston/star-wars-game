@@ -283,13 +283,14 @@ h2 {
 	font-size: 2em;
 }
 
-#restart {
+/* #restart {
   display: flex;
   justify-content: center;
   align-content: center;
   align-items: center;
   margin-left: 234px;
-}
+  vertical-align: middle;
+} */
 
 .attackBtn {
 	vertical-align: middle;
