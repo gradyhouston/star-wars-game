@@ -84,26 +84,6 @@
 
   var battleSoundsPick = [];
 
-  // Background array
-  // var bgArray = [
-  //     "../images/backgrounds/starwars_bg1.jpg",
-  //     "../images/backgrounds/starwars_bg2.jpg",
-  //     "../images/backgrounds/starwars_bg3.jpg",
-  //     "../images/backgrounds/starwars_bg4.jpg",
-  //     "../images/backgrounds/starwars_bg5.jpg",
-  //     "../images/backgrounds/starwars_bg6.jpg",
-  //     "../images/backgrounds/starwars_bg7.jpg",
-  //     "../images/backgrounds/starwars_bg8.jpg",
-  //     "../images/backgrounds/starwars_bg9.jpg",
-  //     "../images/backgrounds/starwars_bg10.jpg"
-  //   ];
-  //
-  //
-  // var bg = [];
-
-
-
-
 
 // ----- Functions ----- //
 
@@ -182,12 +162,6 @@ $(document).ready(function() {
   // displays the modal
   $('#myModal').modal('show');
 
-    // gets the link for the theme song to be played in the background
-  	// var audioElement = document.createElement('audio');
-  	// audioElement.autoplay = true;
-  	// audioElement.loop = true;
-    // audioElement.setAttribute('src', 'assets/audio/starwars.m4a');
-
     var audioMute = document.getElementById('background_audio');
 
     var muteCtrlSrcs = {
@@ -206,79 +180,6 @@ $(document).ready(function() {
       audioMute.muted = !audioMute.muted;
     });
 
-        //  EXPERIMENTAL CODE BELOW HERE //
-
-        // Background audio toggle code attemps //
-//     $(document).ready(function(){
-//     var audio = document.getElementById("audio");
-//     audio.autoplay = true;
-//
-//     $("#mute-toggle").click(function(){ // on toggle click
-//         if($(this).hasClass("toggled")){ // if toggle has class "toggled"
-//             audio.muted = false; // unmute audio
-//         } else { // vice versa
-//             audio.muted = true;
-//         }
-//
-        // Another audio toggle code attempt //
-//         $(this).toggleClass("toggled"); // toggle class "toggled"
-//     });
-// });
-
-      // Another audio toggle code attempt //
-//     $(function() {
-//     $("#mute").click(function(e) {
-//         e.preventDefault();
-//
-//         var song = $('background_audio')[0]
-//         if (song.paused){
-//             song.play();
-//             document.getElementById("mute").src = "assets/images/audio_off.png";
-//         }else{
-//             song.pause();
-//             document.getElementById("mute").src = "assets/images/audio_on.png";
-//         }
-//         });
-// });
-
-//         // Attempts are random background cycles //
-// $(document).ready(function() {
-//
-//     $('body').css('background-image', bg);
-//     // then you can put it right before the variable 'bg'
-//     $('body').css('background-image', "../images/backgrounds/", bg);
-//
-// });
-//
-//         Attempts are random background cycles //
-    // $('body').css({'background-image': '(../images/backgrounds/' + bg[Math.floor(Math.random() * bg.length)] + ')'
-  // });
-//
-//         Attempts are random background cycles //
-  // bg = bgArray[Math.floor(Math.random() * bgArray.length)];
-  // $("body").css("background-image", '../images/backgrounds/(' + bg + ')');
-//
-  // $('<img class="fadeIn" src="../images/backgrounds' + bgArray[Math.floor(Math.random() * bgArray.length)] + '">');
-
-//   $(document).ready(function() {
-//
-//   var bg = bgArray[Math.floor(Math.random() * bgArray.length)];
-//   // var path = '../images/backgrounds';
-//   var imageUrl = bg;
-//   console.log(bg);
-//     $('body').css('background-image', 'url(' + imageUrl + ')');
-// });
-
-
-// function randomBackground() {
-//
-//     $('body').css({
-//         'background' : 'url('+ bgArray[Math.floor(Math.random() * bgArray.length)] + ') no-repeat',
-//         'background-attachment' : 'scroll',
-//         'background-position' : '50% 50%',
-//         'background-size' : 'cover'
-//     });
-// }
 
 // Show Random Image on Page Load
 // randomBackground();
@@ -551,4 +452,4 @@ $(document).ready(function() {
       resetGame();
     });
 
-}); // Main routine
+});
